@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://i.ibb.co/NmC9gL5/logo2.jpg" type="image/x-icon">
+    <title>JOB COACH</title>
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+        }
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+                .header-title {
+                    display: block;
+                    margin-top: 10px;
+                }
+    
+                .nav-links {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+    
+                .menu {
+                    flex-direction: column;
+                    align-items: center;
+                }
+    
+                .menu-item {
+                    width: 80%;
+                }
+    
+                .carousel {
+                    width: 90%;
+                }
+            }
+    </style>
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
+    <div class="content">
+        <style>
+            /* Estilo General */
+            body {
+                background-color: #000;
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                color: white;
+            }
+    
+            /* Header */
+            .header {
+                background-color: #333;
+                padding: 20px;
+                text-align: center;
+            }
+    
+            .header .logo img {
+                width: 80px;
+                vertical-align: middle;
+            }
+    
+            .header-title {
+                display: inline-block;
+                font-size: 24px;
+                font-weight: bold;
+                margin-left: 10px;
+            }
+    
+            .nav-links {
+                margin-top: 10px;
+            }
+    
+            .nav-links a {
+                color: rgb(228, 209, 209);
+                margin: 0 15px;
+                text-decoration: none;
+                font-size: 18px;
+            }
+    
+            .nav-links a:hover {
+                text-decoration: underline;
+            }
+    
+            /* Carrusel */
+            .carousel {
+                position: relative;
+                width: 60%;
+                margin: 20px auto;
+                overflow: hidden;
+                border-radius: 10px;
+            }
+    
+            .slides {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
+    
+            .slide {
+                min-width: 100%;
+                text-align: center;
+            }
+    
+            .slide img {
+                width: 80%;
+                height: auto;
+                border: 4px solid #7FFFD4; /* Borde aguamarina */
+                border-radius: 10px;
+            }
+    
+            .carousel-nav {
+                text-align: center;
+                margin-top: 10px;
+            }
+    
+           
+    
+            .carousel-nav button:hover {
+                background-color: #00CED1;
+            }
+    
+            /* Menú */
+            .menu {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                padding: 20px;
+                gap: 20px;
+            }
+    
+            .menu-item {
+                text-align: center;
+                width: 30%;
+            }
+    
+            .menu-item img {
+                width: 80%;
+                height: auto;
+                border: 3px solid #7FFFD4;
+                border-radius: 10px;
+                transition: transform 0.3s;
+            }
+    
+            .menu-item img:hover {
+                transform: scale(1.05);
+            }
+    
+            .menu-item h3 {
+                color: white;
+            }
+    
+            /* Footer */
+            footer {
+                background-color: #333;
+                color: white;
+                text-align: center;
+                padding: 10px;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+    
+            /* Responsivo */
+            @media (max-width: 768px) {
+                .header-title {
+                    display: block;
+                    margin-top: 10px;
+                }
+    
+                .nav-links {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
+    
+                .menu {
+                    flex-direction: column;
+                    align-items: center;
+                }
+    
+                .menu-item {
+                    width: 80%;
+                }
+    
+                .carousel {
+                    width: 90%;
+                }
+            }
+        </style>
+    
+
+    
+        <script>
+            let currentSlide = 0; // Slide actual
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+    
+            function showSlide(index) {
+                const slidesContainer = document.querySelector('.slides');
+                slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+            }
+    
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+    
+            function previousSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+            }
+    
+            // Ejecutar la función nextSlide cada 3 segundos
+            setInterval(nextSlide, 1500);
+        </script>
+    </head>
+    
+    <body>
+        <header class="header">
+            <a href="index.php" class="logo">
+<img src="https://play-lh.googleusercontent.com/OVDRAcrEeJyJW6C3Cdq3wyw_bvw3rpsAcB4QtisUK5vMDrW7HNBN77HEKOQf2zY6LdI" alt="logo1" ></a>
+            <span class="header-title">JOB COACH</span>
+            <nav class="nav-links">
+            
+
+            </nav>
+        </header>
+     <main class="main-content">
+            <div class="carousel">
+                <div class="slides">
+                    <div class="slide">
+                        <img src="https://www.kieranperry.com/media/1533/job-coach-uk.png?center=0.68235294117647061,0.49915966386554622&mode=crop&quality=70&width=900&height=450&rnd=133970602190000000" alt="slide-1"  />
+                    </div>
+                
+                </div>
+    
+            </div>
+        </main>
+
+                 <section class="menu">
+                 <div class="menu-item">
+                    <a href="metodologia.html">
+                        <h3>Metodologia</h3>
+                        <img src="https://ideogram.ai/assets/progressive-image/balanced/response/LKD2sS1jS7yhJFf_AR_kxg" alt="Misión y Visión" />
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="OBJETIVO.html">
+                        <h3>objetivos</h3>
+                        <img src="https://ideogram.ai/assets/image/lossless/response/5IVmchgcRDePbabi8m9l-w" alt="Misión y Visión" />
+                    </a>
+                </div>
+                <div class="menu-item">
+                    <a href="impacto.html">
+                        <h3>impacto esperado</h3>
+                        <img src="https://ideogram.ai/assets/image/lossless/response/qpwtU8jfQhivSfnINeRnVQ" alt="Sugerencias" />
+                    </a>
+                </div>
+              
+                <div class="menu-item">
+                    <a href="resultados.html">
+                        <h3>resultados esperados</h3>
+                        <img src="https://ideogram.ai/assets/progressive-image/balanced/response/Q2ARmbnHQKSEegC_fyzkjw" alt="Ofertas" />
+                    </a>
+                </div>
+               
+            </section>
+        </main>
+    
+        <footer>
+            &copy; 2025 JOB COACH. Todos los derechos reservados.
+        </footer>
+
+    </div>
+    <script>
+        const canvas = document.getElementById("particleCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+
+        class Particle {
+            constructor(x, y, speedX, speedY, radius, color) {
+                this.x = x;
+                this.y = y;
+                this.speedX = speedX;
+                this.speedY = speedY;
+                this.radius = radius;
+                this.color = color;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            const radius = Math.random() * 3 + 2;
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const speedX = (Math.random() - 0.5) * 2;
+            const speedY = (Math.random() - 0.5) * 2;
+            const color = `rgba(255, 255, 255, ${Math.random()})`;
+            particles.push(new Particle(x, y, speedX, speedY, radius, color));
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / 100})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle) => {
+                particle.update();
+                particle.draw();
+            });
+            connectParticles();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>

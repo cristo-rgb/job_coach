@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>especificos</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Envía el canvas al fondo */
+            pointer-events: none; /* Permite interactuar con el contenido encima */
+        }
+        /* css de la  pagina a anclar al canvas*/
+
+        body {
+            background-color: #000; /* Fondo negro */
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+        }
+
+        .header {
+            background-color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header .logo img {
+            width: 80px;
+            vertical-align: middle;
+        }
+
+        .header-title {
+            display: inline-block;
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        /* Formulario Nosotros */
+        .form_nosotros {
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            padding: 30px;
+            width: 50%;
+            margin: 40px auto;
+            box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.2);
+        }
+
+        .form_nosotros h2 {
+            color: #7FFFD4; /* Aguamarina */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form_nosotros p {
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .form_nosotros img {
+            display: block;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            border: 4px solid #7FFFD4; /* Borde aguamarina */
+            width: 270px;
+        }
+
+        .button {
+            background-color: #00CED1; /* Aguamarina oscura */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            width: 60%;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #7FFFD4;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .form_nosotros {
+                width: 90%;
+            }
+
+            .button {
+                width: 80%;
+            }
+        }
+
+
+        /* fin del css a anclar*/
+    </style>
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
+<!-- contenido sin css-->
+ <header class="header">
+        <a href="index.html" class="logo">
+            <img src="https://play-lh.googleusercontent.com/OVDRAcrEeJyJW6C3Cdq3wyw_bvw3rpsAcB4QtisUK5vMDrW7HNBN77HEKOQf2zY6LdI" alt="Logo" />
+        </a>
+        <span class="header-title">JOB COACH</span>
+    </header>
+
+    <main>
+        <form action="#" method="post" class="form_nosotros">
+            <h2 class="titulo_form_nosotros">OBJETIVOS ESPECIFICOS</h2>
+            <img src="https://inincim.com/wp-content/uploads/2023/01/Objetivos-generales-y-especificos-1300x731.jpg" alt="Logo" />
+            <p> <center>
+            <p>- Desarrollar una I.A generativa  la cual simule escenarios de entrevistas laborales.</p>
+
+            <p>-Mejorar la confianza y habilidades comunicativas de los usuarios en laborales
+             entrevistas laborales llevándolos a tener mas probabilidad de obtener el
+              trabajo el cual aspiran ser contratados.</p>
+
+            <p>-Brindar una simulación de una entrevista y retroalimentación enfocada al usuario 
+             y el empleo que desea ser contratado.</p>
+ 
+            </center>
+            </p>
+            <button type="button" class="button" onclick="window.location.href='index.html'">Volver al Inicio</button>
+        </form>
+    </main>
+
+    <footer style="text-align: center; padding: 10px; background-color: #333; color: white;">
+        &copy; 2025 MASTER WASH. Todos los derechos reservados.
+    </footer>
+<!--fin del contenido sin css-->
+    <script>
+        const canvas = document.getElementById("particleCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+
+        class Particle {
+            constructor(x, y, speedX, speedY, radius, color) {
+                this.x = x;
+                this.y = y;
+                this.speedX = speedX;
+                this.speedY = speedY;
+                this.radius = radius;
+                this.color = color;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            const radius = Math.random() * 3 + 2;
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const speedX = (Math.random() - 0.5) * 2;
+            const speedY = (Math.random() - 0.5) * 2;
+            const color = `rgba(255, 255, 255, ${Math.random()})`;
+            particles.push(new Particle(x, y, speedX, speedY, radius, color));
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / 100})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle) => {
+                particle.update();
+                particle.draw();
+            });
+            connectParticles();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
